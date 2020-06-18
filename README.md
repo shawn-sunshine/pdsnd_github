@@ -11,4 +11,4 @@ This project will use bikeshare data and interact with users to provide some ins
 bikeshare.py
 
 ### Credits
-Udacity - Programming for Data Science with Python Course
+[Udacity - Programming for Data Science with Python Course](https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104)

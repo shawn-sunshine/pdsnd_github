@@ -263,4 +263,4 @@ def main():
 if __name__ == "__main__":
 	main()
 
-print('Thank you for stopping by. Good bye!')
+print('Thank you for using my project. Good bye!')

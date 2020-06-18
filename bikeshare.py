@@ -189,6 +189,11 @@ def user_stats(df, city):
         # TO DO: Display most common year of birth
         common_birth_year = df['Birth Year'].mode()[0]
         print('The most common customer year of birth:', common_birth_year)
+
+        ## Display the oldest customer
+        oldest = df['Birth Year'].max()[0]
+        print('The oldest cusomter was born in:', oldest)
+
     else:
         print('\n***Washington does not have data for Gender and Birth Year***')
 

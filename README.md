@@ -8,7 +8,7 @@ Bikeshare in Chicago, NYC, and Washington
 This project will use bikeshare data and interact with users to provide some insights about the bikeshare in those big cities.
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.

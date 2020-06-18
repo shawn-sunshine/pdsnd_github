@@ -12,3 +12,5 @@ bikeshare.py
 
 ### Credits
 [Udacity - Programming for Data Science with Python Course](https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104)
+
+[About READMEs on GitHub](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes)

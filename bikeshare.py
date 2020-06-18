@@ -13,7 +13,7 @@ dow_choices = ('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday
 
 # Ask user to input city
 def city_input():
-    print('Hello. Let\'s explore some bikeshare data from some US cities!')
+    print('Hello. Let\'s explore bikeshare data in US!')
     while True:
         try:
             city = input('Please pick a city Chicago, New York City, or Washington: ').lower().strip()
@@ -68,7 +68,7 @@ def load_data(city, month, dow, time_filter):
     df['dow'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
     df['trip'] = df['Start Station'] + ' and return to ' + df['End Station']
-    
+
 #The question sets will be adjusted based on the user input
     if time_filter == 'both':
         if month != 'all':
@@ -89,44 +89,44 @@ def load_data(city, month, dow, time_filter):
 def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    
+
 #Most common month. If month filter is used, the asnwer will be the month that user input.
     df['Start Time'] =  pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     most_common_month = df['month'].mode()[0]
     print('Most common month is:', most_common_month)
-    
-#Most common day of week. If day of week filter is used, the asnwer will be the day of week that user input.   
+
+#Most common day of week. If day of week filter is used, the asnwer will be the day of week that user input.
     df['dow'] = df['Start Time'].dt.weekday_name
     most_common_dow = df['dow'].mode()[0]
     print('Most common day of week:', most_common_dow)
-    
-#Most common hour. 
+
+#Most common hour.
     most_common_start_hour = df['hour'].mode()[0]
     print('Most common start hour (24-hour format):', most_common_start_hour)
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
-  
+
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    
-#Most Popular Start Station 
+
+#Most Popular Start Station
     most_common_start_station = df['Start Station'].mode()[0]
     print('Most commonly used start station:', most_common_start_station)
-    
-#Most Popular End Station 
+
+#Most Popular End Station
     most_common_end_station = df['End Station'].mode()[0]
     print('Most commonly used end station:', most_common_end_station)
 
-#Most Popular Trip  
+#Most Popular Trip
     most_frequent_trip = df['trip'].mode()[0]
     print('Most frequent trip:', most_frequent_trip)
     print('The Start Station is', most_frequent_trip.split(' and return to ')[0],'and End Station is', most_frequent_trip.split(' and return to ')[1])
-   
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -142,7 +142,7 @@ def trip_duration_stats(df):
     sec = (total_time%3600)%60
     print('Total travel time in seconds:', total_time)
     print('In another word, total travel time is:', hour,'hour(s)', minute,'minute(s)', sec,'second(s)')
-    
+
 # TO DO: display mean travel time
     mean_time = (df['Trip Duration'].mean())
     mean_hour = mean_time//3600
@@ -167,7 +167,7 @@ def user_stats(df, city):
     #The code below is to show the same data with NaN entries
     #print('\nCounts of user type with NaN entries:')
     #print(df['User Type'].value_counts(dropna=False))
-        
+
     # TO DO: Display counts of gender
     # Since Washington does not have column for Gender and Birth Year, we will skip this data when user input Washington
     if city != 'washington':
@@ -191,14 +191,14 @@ def user_stats(df, city):
         print('The most common customer year of birth:', common_birth_year)
     else:
         print('\n***Washington does not have data for Gender and Birth Year***')
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def ind_data(df):
     print('\nCalculating User Stats...\n')
     ind_df = df.drop(['month','dow','trip', 'hour'], axis =1)
-    next_page = 'yes'    
+    next_page = 'yes'
     i = 0
     while next_page == 'yes':
         try: #to prevent the loop crash when it reach to the end of the list!
@@ -206,10 +206,10 @@ def ind_data(df):
                  print(ind_df.iloc[i], '\n')
         except:
             print('This is the end of the list!')
-            break       
+            break
         i += 1
         next_page = input('Would you like to continue to next page? Input yes to continue or anything else to stop: ')
-      
+
     print('-'*40)
 
 def main():
@@ -228,29 +228,29 @@ def main():
         else:
             month = ''
             dow = ''
-            
+
         df = load_data(city, month, dow, time_filter)
-       
+
         answer_time = input('\nWould you like to see the most frequent Times of Travel? Input yes to continue or anything else to skip: ').lower().strip()
         if answer_time == 'yes':
             time_stats(df)
-        
+
         answer_station = input('\nWould you like to see the most popular Stations and Trip? Input yes to continue or anything else to skip: ').lower().strip()
         if answer_station == 'yes':
             station_stats(df)
-        
+
         answer_duration = input('\nWould you like to see Trip Duration? Input yes to continue or anything else to skip: ').lower().strip()
         if answer_duration == 'yes':
             trip_duration_stats(df)
-        
+
         answer_user = input('\nWould you like to see User Stats? Input yes to continue or anything else to skip: ').lower().strip()
         if answer_user == 'yes':
             user_stats(df, city)
-        
+
         answer_ind = input('\nWould you like to see Individual Data (group of 5)? Input yes to continue or anything else to skip: ').lower().strip()
         if answer_ind == 'yes':
             ind_data(df)
-        
+
         restart = input('\nWould you like to restart? Enter \'yes\' to restart or antyhing else to stop.\n')
         if restart.lower().strip()!= 'yes':
             break

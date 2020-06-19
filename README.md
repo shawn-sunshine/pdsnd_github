@@ -1,15 +1,16 @@
 ### Date created
-Include the date you created this project and README file.
+18 June 2020
 
 ### Project Title
-Replace the Project Title
+Bikeshare in Chicago, NYC, and Washington
 
 ### Description
-Describe what your project is about and what it does
+This project will use bikeshare data and interact with users to provide some insights about the bikeshare in those big cities.
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+[Udacity - Programming for Data Science with Python Course](https://www.udacity.com/course/programming-for-data-science-nanodegree--nd104)
 
+[About READMEs on GitHub](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes)
